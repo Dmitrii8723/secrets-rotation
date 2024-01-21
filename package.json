@@ -1,0 +1,10 @@
+{
+  "name": "my-secrets-rotation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Dmitrii Kharapaev",
+  "license": "MIT",
+  "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.496.0"
+  }
+}
