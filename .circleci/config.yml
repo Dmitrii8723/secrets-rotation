@@ -37,7 +37,7 @@ jobs:
       - run:
           name: Retrieve secret value
           command: |
-            export SECRET_VALUE=$(aws --profile profile-lyndium-serverless secretsmanager get-secret-value --secret-id $SECRET_ARN --query SecretString --output text --region us-east-1)
+            export SECRET_VALUE=$(aws --access-key $AWS_ACCESS_KEY_ID --secret-key AWS_SECRET_ACCESS_KEY secretsmanager get-secret-value --secret-id $SECRET_ARN --query SecretString --output text --region us-east-1)
 
       # Debug step to print the secret value
       - run:
