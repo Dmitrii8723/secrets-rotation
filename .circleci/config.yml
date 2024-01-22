@@ -39,7 +39,7 @@ jobs:
       - run:
           name: Retrieve secret value
           command: |
-            export SECRET_VALUE=$(aws secretsmanager get-secret-value --secret-id $SECRET_ARN --query SecretString --output text --region us-east-1)
+            echo SECRET_VALUE=$(aws secretsmanager get-secret-value --secret-id $SECRET_ARN --query SecretString --output text --region us-east-1)
 
       # Debug step to print the secret value
       - run:
