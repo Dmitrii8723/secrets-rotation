@@ -27,6 +27,12 @@ jobs:
           command: |
             echo "SECRET_ARN=$SECRET_ARN" >> $BASH_ENV
 
+      # Debug step to print the secret ARN
+      - run:
+          name: Debug secret ARN
+          command: |
+            echo "SECRET_ARN: $SECRET_ARN"
+
       # Retrieve secret value from Secrets Manager
       - run:
           name: Retrieve secret value
