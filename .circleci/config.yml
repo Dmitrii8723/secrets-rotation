@@ -66,6 +66,12 @@ jobs:
           command: |
             export DB_PASSWORD=$(echo $SECRET_VALUE | jq -r '.password')
 
+      # Log out the secret value
+      - run:
+          name: Log secret value
+          command: |
+            echo "Secret Value: $DB_PASSWORD"
+
       # Set the password as an environment variable
       - run:
           name: Set environment variable
