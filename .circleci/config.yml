@@ -58,7 +58,7 @@ jobs:
       - run:
           name: Retrieve secret value
           command: |
-            export SECRET_VALUE=$(aws secretsmanager get-secret-value --secret-id $SECRET_ARN --query SecretString --output text)
+            export SECRET_VALUE=$(aws secretsmanager get-secret-value --secret-id $SECRET_ARN --query SecretString --output text --region us-east-1)
 
       # Extract password from secret value
       - run:
