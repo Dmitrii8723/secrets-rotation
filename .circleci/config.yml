@@ -37,7 +37,7 @@ jobs:
       - run:
           name: Retrieve secret value
           command: |
-            export SECRET_VALUE=$(aws secretsmanager get-secret-value --secret-id arn:aws:secretsmanager:us-east-1:415611924805:secret:ttttt-8xpjeu --query SecretString --output text --region us-east-1)
+            export SECRET_VALUE=$(aws --profile profile-lyndium-serverless secretsmanager get-secret-value --secret-id $SECRET_ARN --query SecretString --output text --region us-east-1)
 
       # Debug step to print the secret value
       - run:
