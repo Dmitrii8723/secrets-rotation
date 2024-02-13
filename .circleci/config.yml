@@ -36,26 +36,21 @@ jobs:
             echo "SECRET_ARN: $SECRET_ARN"
 
       # Retrieve secret value from Secrets Manager
+      # Retrieve secret value from Secrets Manager and export it
       - run:
           name: Retrieve secret value
           command: |
-            echo SECRET_VALUE=$(aws secretsmanager get-secret-value --secret-id $SECRET_ARN --query SecretString --output text --region us-east-1)
+            echo "export SECRET_VALUE=$(aws secretsmanager get-secret-value --secret-id $SECRET_ARN --query SecretString --output text --region us-east-1)" >> $BASH_ENV
 
-      # Debug step to print the secret value
+      # Extract username from secret value and export it
       - run:
-          name: Debug secret value
+          name: Extract username
           command: |
-             export DB_USERNAME=$(echo $SECRET_VALUE | jq -r '.username')
+            echo "export DB_USERNAME=$(echo $SECRET_VALUE | jq -r '.username')" >> $BASH_ENV
 
       # Log out the username
       - run:
           name: Log username
           command: |
             echo "DB_USERNAME: $DB_USERNAME"
-
-      # Set the username as an environment variable
-      - run:
-          name: Set environment variable
-          command: |
-            echo "DB_USERNAME=$DB_USERNAME" >> $BASH_ENV
       
