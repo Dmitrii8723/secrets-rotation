@@ -43,11 +43,11 @@ jobs:
             DB_USERNAME=$(echo $SECRET_VALUE | jq -r '.username')
             echo "DB_USERNAME=$DB_USERNAME" >> $BASH_ENV
 
-      # # Debug step to print the secret value
-      # - run:
-      #     name: Debug secret value
-      #     command: |
-      #       echo "Secret Value: $SECRET_VALUE"
+      # Debug step to print the secret value
+      - run:
+          name: Debug secret value
+          command: |
+            echo "Secret Value: $DB_USERNAME"
 
       # # Extract password from secret value
       # - run:
