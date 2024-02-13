@@ -45,24 +45,17 @@ jobs:
       - run:
           name: Debug secret value
           command: |
-            echo "Secret Value: $SECRET_VALUE"
+             export DB_USERNAME=$(echo $SECRET_VALUE | jq -r '.username')
 
-      # Extract password from secret value
+      # Log out the username
       - run:
-          name: Extract password
+          name: Log username
           command: |
-            export DB_PASSWORD=$(echo $SECRET_VALUE | jq -r '.password')
+            echo "DB_USERNAME: $DB_USERNAME"
 
-      # Log out the secret value
-      - run:
-          name: Log secret value
-          command: |
-            echo "DB_PASSWORD: $DB_PASSWORD"
-
-      # Set the password as an environment variable
+      # Set the username as an environment variable
       - run:
           name: Set environment variable
           command: |
-            echo "DB_PASSWORD=$DB_PASSWORD" >> $BASH_ENV
-
+            echo "DB_USERNAME=$DB_USERNAME" >> $BASH_ENV
       
