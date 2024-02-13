@@ -39,10 +39,7 @@ jobs:
       - run:
           name: Retrieve secret value
           command: |
-            SECRET_VALUE=$(aws secretsmanager get-secret-value --secret-id $SECRET_ARN --query SecretString --output text --region us-east-1)
-            SECRET_JSON=$(echo $SECRET_VALUE | jq -r .)
-            DB_HOST=$(echo $SECRET_JSON | jq -r .host)
-            echo "export DEV_DB_HOST=$DB_HOST" >> $BASH_ENV
+            echo SECRET_VALUE=$(aws secretsmanager get-secret-value --secret-id $SECRET_ARN --query SecretString --output text --region us-east-1)
 
       # Debug step to print the secret value
       - run:
