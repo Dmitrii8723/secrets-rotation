@@ -40,7 +40,7 @@ jobs:
       - run:
           name: Retrieve secret value
           command: |
-            echo "export SECRET_VALUE=$(aws secretsmanager get-secret-value --secret-id $SECRET_ARN --query SecretString --output text --region us-east-1)" >> $BASH_ENV
+            echo 'export SECRET_VALUE='\"$(aws secretsmanager get-secret-value --secret-id $SECRET_ARN --query SecretString --output text --region us-east-1)\" >> $BASH_ENV
 
       # Extract username from secret value and export it
       - run:
