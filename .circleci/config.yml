@@ -45,27 +45,27 @@ jobs:
             echo "export DEV_DB_HOST=$DB_HOST" >> $BASH_ENV
 
       # Debug step to print the secret value
-      # - run:
-      #     name: Debug secret value
-      #     command: |
-      #       echo "Secret Value: $SECRET_VALUE"
+      - run:
+          name: Debug secret value
+          command: |
+            echo "Secret Value: $SECRET_VALUE"
 
-      # # Extract password from secret value
-      # - run:
-      #     name: Extract password
-      #     command: |
-      #       export DB_PASSWORD=$(echo $SECRET_VALUE | jq -r '.password')
+      # Extract password from secret value
+      - run:
+          name: Extract password
+          command: |
+            export DB_PASSWORD=$(echo $SECRET_VALUE | jq -r '.password')
 
-      # # Log out the secret value
-      # - run:
-      #     name: Log secret value
-      #     command: |
-      #       echo "DB_PASSWORD: $DB_PASSWORD"
+      # Log out the secret value
+      - run:
+          name: Log secret value
+          command: |
+            echo "DB_PASSWORD: $DB_PASSWORD"
 
       # Set the password as an environment variable
-      # - run:
-      #     name: Set environment variable
-      #     command: |
-      #       echo "DB_PASSWORD=$DB_PASSWORD" >> $BASH_ENV
+      - run:
+          name: Set environment variable
+          command: |
+            echo "DB_PASSWORD=$DB_PASSWORD" >> $BASH_ENV
 
       
